@@ -213,7 +213,7 @@ and the result showed a significant improvement
 ![](img/exp1-3.png)
 ![](img/exp1-2.png)
 
-#### Results
+#### Result
 
 After the trained model was exported, I run it on a driving scenario.
 ![](animation.gif)
