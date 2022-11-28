@@ -204,13 +204,14 @@ I did run the model multipletime, each time with different configuration such as
 
 my last experiment was
 
-- Increase batch size to 8
+- Increase batch size to 8, the default was 2, the purpose of batch size is to know the number of training utilized in one iteration, the bigger the better but it usually limited by the hardware. I started 2, 4 then 8 which gave me the best result.
 - Randomly adjust saturation
 - Randomly adjust hue
 - Randomly adjust brightness
 - Randomly change rgb to gray
 
-and the result showed a significant improvement
+Again, the changes to the data by adjusting saturation, hue, brightness, change to gray image is so the model can work on more flavour of dataset (replicate night driving, poor camera quality, bright sun scenario...etc)and learn more which will result in better model.
+the result showed a significant improvement
 
 ![](img/exp1-3.png)
 ![](img/exp1-2.png)
