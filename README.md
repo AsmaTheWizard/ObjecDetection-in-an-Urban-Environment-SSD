@@ -211,7 +211,8 @@ my last experiment was
 - Randomly change rgb to gray
 
 Again, the changes to the data by adjusting saturation, hue, brightness, change to gray image is so the model can work on more flavour of dataset (replicate night driving, poor camera quality, bright sun scenario...etc)and learn more which will result in better model.
-the result showed a significant improvement
+
+The result below showed a significant improvement in tge model, as loss values decreased which mean the the model is performing well and not producing a lot of error as the baseline.
 
 ![](img/exp1-3.png)
 ![](img/exp1-2.png)
