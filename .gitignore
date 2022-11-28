@@ -1,0 +1,7 @@
+*__pycache__
+*.ipynb_checkpoints/
+experiments/pretrained_model/
+experiments/reference/experiment0/
+experiments/reference/experiment1/
+experiments/reference/exported/checkpoint/
+experiments/reference/exported/saved_model/variables/
