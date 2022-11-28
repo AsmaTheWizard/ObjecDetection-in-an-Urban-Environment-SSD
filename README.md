@@ -188,6 +188,8 @@ The uUdacity team already split the dataset into 3 groups, the training data, th
 
 Both final experiments I used SSD_ResNet50 model, and I tweaked the configuration. For the first experiment (experiment 0) I used the default configuration(file:"pipeline_new.config"), the result I used it as a baseline.
 
+The orange curve is Loss in training while the blue dot is Loss in evaluation. From below graphs, it obvious that the model needs to be more general to predict objects in unseen data. In order to improve that, I will add more varaities to the data to simulate different environments. That's why I will add more data augmentation to the configuration file.
+
 ![](img/exp0-1.png)
 ![](img/exp0-2.png)
 ![](img/exp0-3.png)
