@@ -2,8 +2,6 @@
 
 This project was part of Self-Driving Car Engineer Nanodegree program by Udacity. The goal of the project is to use computer vision techniques to detect and track objects in anurban environment using the TensorFlow Object Detection API to train a model to detect and track vehicles, pedestrians, and other objects. The dataset I used was Waymo Data.
 
-TODO:
-- improve validaition
 
 ## Submission
 
