@@ -1,5 +1,80 @@
 # Object Detection in an Urban Environment
 
+This project was part of Self-Driving Car Engineer Nanodegree program by Udacity. The goal of the project is to use computer vision techniques to detect and track objects in anurban environment using the TensorFlow Object Detection API to train a model to detect and track vehicles, pedestrians, and other objects. The dataset I used was Waymo Data.
+
+TODO:
+- improve validaition
+
+## Submission
+
+### Project overview
+
+The goal of this project is to use deep learning method to detec objects in an Urban Emvironments. I used the [Waymo Open dataset](https://waymo.com/open/) to train the neural network model.
+
+### Set up
+
+There is a 2 approaches to set-up the project, both of them are menioned in the above section. I used the Udacity Workspace set-up.
+
+### Dataset
+
+#### Dataset analysis
+
+First, we have to undertsnad the dataset by plotting the boundig box using the information that comes with the dataset, then randomly show 10 images to understand the nature of the dataset we have. (here, I will just show 3 images, if you want to see the rest and the code, check the notebook "Exploratory Data Analysis").
+
+![](img/1-1.png)
+![](img/1-2.png)
+![](img/1-3.png)
+
+The dataste comes with classes, to help understand it better, I plot the total count of each class, as shown below
+
+![](img/vis1.png)
+
+#### Cross validation
+
+The uUdacity team already split the dataset into 3 groups, the training data, the validation data and the test data.
+
+### Training
+
+#### Reference experiment
+
+Both final experiments I used SSD_ResNet50 model, and I tweaked the configuration. For the first experiment (experiment 0) I used the default configuration(file:"pipeline_new.config"), the result I used it as a baseline.
+
+The orange curve is Loss in training while the blue dot is Loss in evaluation. From below graphs, it obvious that the model needs to be more general to predict objects in unseen data. In order to improve that, I will add more varaities to the data to simulate different environments. That's why I will add more data augmentation to the configuration file.
+
+![](img/exp0-1.png)
+![](img/exp0-2.png)
+![](img/exp0-3.png)
+![](img/exp0-5.png)
+
+#### Improve on the reference
+
+I did run the model multipletime, each time with different configuration such as batch size, apply different data augmentation options...etc but I faced issue with the udacity workspace, sometimes I couldn't finish the training so that's why I couldn't take screenshot for all my experiments.
+![](img/1-8.png)
+![](img/1-7.png)
+![](img/1-6.png)
+
+my last experiment was
+
+- Increase batch size to 8, the default was 2, the purpose of batch size is to know the number of training utilized in one iteration, the bigger the better but it usually limited by the hardware. I started 2, 4 then 8 which gave me the best result.
+- Randomly adjust saturation
+- Randomly adjust hue
+- Randomly adjust brightness
+- Randomly change rgb to gray
+
+Again, the changes to the data by adjusting saturation, hue, brightness, change to gray image is so the model can work on more flavour of dataset (replicate night driving, poor camera quality, bright sun scenario...etc)and learn more which will result in better model.
+
+The result below showed a significant improvement in tge model, as loss values decreased which mean the the model is performing well and not producing a lot of error as the baseline.
+
+![](img/exp1-3.png)
+![](img/exp1-2.png)
+
+#### Result
+
+After the trained model was exported, I run it on a driving scenario.
+![](animation.gif)
+
+
+
 ## Data
 
 For this project, we will be using data from the [Waymo Open dataset](https://waymo.com/open/).
@@ -153,71 +228,3 @@ Finally, you can create a video of your model's inferences for any tf record fil
 ```
 python inference_video.py --labelmap_path label_map.pbtxt --model_path experiments/reference/exported/saved_model --tf_record_path /data/waymo/testing/segment-12200383401366682847_2552_140_2572_140_with_camera_labels.tfrecord --config_path experiments/reference/pipeline_new.config --output_path animation.gif
 ```
-
-## Submission
-
-### Project overview
-
-The goal of this project is to use deep learning method to detec objects in an Urban Emvironments. I used the [Waymo Open dataset](https://waymo.com/open/) to train the neural network model.
-
-### Set up
-
-There is a 2 approaches to set-up the project, both of them are menioned in the above section. I used the Udacity Workspace set-up.
-
-### Dataset
-
-#### Dataset analysis
-
-First, we have to undertsnad the dataset by plotting the boundig box using the information that comes with the dataset, then randomly show 10 images to understand the nature of the dataset we have. (here, I will just show 3 images, if you want to see the rest and the code, check the notebook "Exploratory Data Analysis").
-
-![](img/1-1.png)
-![](img/1-2.png)
-![](img/1-3.png)
-
-The dataste comes with classes, to help understand it better, I plot the total count of each class, as shown below
-
-![](img/vis1.png)
-
-#### Cross validation
-
-The uUdacity team already split the dataset into 3 groups, the training data, the validation data and the test data.
-
-### Training
-
-#### Reference experiment
-
-Both final experiments I used SSD_ResNet50 model, and I tweaked the configuration. For the first experiment (experiment 0) I used the default configuration(file:"pipeline_new.config"), the result I used it as a baseline.
-
-The orange curve is Loss in training while the blue dot is Loss in evaluation. From below graphs, it obvious that the model needs to be more general to predict objects in unseen data. In order to improve that, I will add more varaities to the data to simulate different environments. That's why I will add more data augmentation to the configuration file.
-
-![](img/exp0-1.png)
-![](img/exp0-2.png)
-![](img/exp0-3.png)
-![](img/exp0-5.png)
-
-#### Improve on the reference
-
-I did run the model multipletime, each time with different configuration such as batch size, apply different data augmentation options...etc but I faced issue with the udacity workspace, sometimes I couldn't finish the training so that's why I couldn't take screenshot for all my experiments.
-![](img/1-8.png)
-![](img/1-7.png)
-![](img/1-6.png)
-
-my last experiment was
-
-- Increase batch size to 8, the default was 2, the purpose of batch size is to know the number of training utilized in one iteration, the bigger the better but it usually limited by the hardware. I started 2, 4 then 8 which gave me the best result.
-- Randomly adjust saturation
-- Randomly adjust hue
-- Randomly adjust brightness
-- Randomly change rgb to gray
-
-Again, the changes to the data by adjusting saturation, hue, brightness, change to gray image is so the model can work on more flavour of dataset (replicate night driving, poor camera quality, bright sun scenario...etc)and learn more which will result in better model.
-
-The result below showed a significant improvement in tge model, as loss values decreased which mean the the model is performing well and not producing a lot of error as the baseline.
-
-![](img/exp1-3.png)
-![](img/exp1-2.png)
-
-#### Result
-
-After the trained model was exported, I run it on a driving scenario.
-![](animation.gif)
