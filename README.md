@@ -11,7 +11,7 @@ The goal of this project is to use deep learning method to detec objects in an U
 
 ### Set up
 
-There is a 2 approaches to set-up the project, both of them are menioned in the above section. I used the Udacity Workspace set-up.
+There is a 2 approaches to set-up the project, both of them are menioned in the below section. I used the Udacity Workspace set-up.
 
 ### Dataset
 
